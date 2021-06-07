@@ -7,6 +7,9 @@ class Login extends CI_Controller {
     {
         parent::__construct();
         $this->load->model('User');
+        if($this->session->has_userdata('user')){
+            redirect(base_url('home') , 'refresh');
+        }
     }
 
     function index(){
@@ -19,9 +22,9 @@ class Login extends CI_Controller {
         $password = $this->input->post('password' , true);
         $user      = $this->User->getUser($email , $password);
         if(!empty($user)){
-            echo 'Success Logged in';
-            echo "<pre>";
-            print_r($user);
+            $this->session->set_userdata("user" , $user);
+            redirect(base_url('home') , 'refresh');
+
         }else{
             echo "Record not found";
         }

@@ -55,4 +55,6 @@ $route['login'] = 'Login/index';
 $route['submit-login'] = 'Login/submitLogin';
 $route['register'] = 'Register/index';
 $route['submit-register'] = 'Register/submitRegister';
+$route['home'] = 'Home_Controller/index';
+$route['logout'] = 'Home_Controller/logout';
 $route['translate_uri_dashes'] = FALSE;
